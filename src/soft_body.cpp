@@ -26,6 +26,7 @@
 int screenWidth = 800;
 int screenHeight = 450;
 Engine engine;
+float speed = 10;
 Shape ground;
 Shape left_side;
 
@@ -42,10 +43,12 @@ int main()
     // Initialization
     //--------------------------------------------------------------------------------------
     InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+
+    //init ground for testing
     ground.set_start(Vector2{0, 450.f});
     ground.set_end(Vector2{800.f, 450.f});
     ground.set_color(Color(BLACK));
-    ground.set_width(50.f);
+    ground.set_width(1.f);
     engine.add_environment(ground);
 
 
@@ -85,7 +88,7 @@ void UpdateDrawFrame(void)
         new_point.color = BLACK;
         engine.add_point(new_point);
     }
-    engine.update(GetTime());
+    engine.update(GetFrameTime() * speed);
 
     // Draw
     //----------------------------------------------------------------------------------

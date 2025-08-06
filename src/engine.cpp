@@ -2,9 +2,6 @@
 #include "../include/engine.hpp"
 #include "raylib.h"
 #include "raymath.h"
-#include <iostream>
-#include <ostream>
-#include <stdio.h>
 
 void Engine::update(float dt){
 
@@ -26,14 +23,10 @@ void Engine::update(float dt){
       //check if point is colliding
       if(s.find_collison(p)){
 
-        DrawText("collision", 190, 0, 20, LIGHTGRAY);
         Collision c = s.get_collision(p);
         
         // resolve the constraint
-        std::cout << p.postion.x << "," << p.postion.y << std::endl;
         p.postion += Vector2Scale(c.normal, c.depth);
-        std::cout << p.postion.x << "," << p.postion.y << std::endl;
-
 
         // compute the normal & tangential velocity
         Vector2 vn = c.normal * Vector2DotProduct(c.normal, p.velocity);

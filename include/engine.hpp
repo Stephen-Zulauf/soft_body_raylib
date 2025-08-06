@@ -11,7 +11,7 @@ class Engine{
     std::vector<Point> points;
     std::vector<Shape> environment;
     
-    Vector2 gravity{0.f, 0.5f};
+    Vector2 gravity{0.f, 9.8f};
     float elasticity = 0.5;
     float friction = 100;
 
